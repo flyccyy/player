@@ -2,9 +2,9 @@
   <div class="result-wrapper">
     <div class="song" v-for="item in songList" :key="item.id">
       <div class="name">
-        <span class="iconfont icon-play"></span>
-        {{item.name}}
-        <span class="iconfont icon-editmedia"></span>
+        <span class="iconfont icon-play" @click="toPlay(item.id)"></span>
+        <a href="" @click.prevent="toComment(item.id)">{{item.name}}</a>
+        <span class="iconfont icon-editmedia" @click="mvPlay(item.mvid)" v-show="item.mvid"></span>
       </div>
       <div class="singer">{{item.artists|formatSinger}}</div>
       <div class="album">《{{item.album.name}}》</div>
@@ -38,6 +38,15 @@ export default {
         .then(res => {
           this.songList = res.data.result.songs;
         });
+    },
+    toPlay(id){
+        this.$router.push(`/player/${id}`)
+    },
+    mvPlay(id){
+        this.$router.push(`/video/${id}`)
+    },
+    toComment(id){
+        this.$router.push(`/comment/${id}`)
     }
   },
   

@@ -6,6 +6,9 @@ import ElementUI from 'element-ui'
 import App from './App.vue'
 import Results from './components/results.vue'
 import Slider from './components/slider.vue'
+import Player from './components/player.vue'
+import Video from './components/video.vue'
+import Comment from './components/comment.vue'
 
 
 
@@ -33,6 +36,18 @@ const routes = [
     //路径自己定义，不是指组件名或者文件名
     path:'/results/:keywords',
     component:Results
+  },
+  {
+    path:'/player/:id',
+    component:Player
+  },
+  {
+    path:'/video/:mvid',
+    component:Video
+  },
+  {
+    path:'/comment/:comment_id',
+    component:Comment
   },
   {
     path:'/slider',
