@@ -1,28 +1,32 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+   <div id="player">
+      <h2 class="title">黑云音乐</h2>
+      <div class="search">
+        <input type="text" v-model="keywords" @keyup.enter="searchMusic"/>
+        <button @click="searchMusic">
+          <span class="iconfont icon-search" ></span>
+        </button>
+      </div>
+      <router-view></router-view>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
+  data(){
+    return {
+      keywords:''
+    }
+  },
+  // 输入关键字后没反应，要刷新才会执行
+  methods: {
+    searchMusic(){
+      this.$router.push(`/results/${this.keywords}`)
+    }
+  },
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
